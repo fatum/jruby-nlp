@@ -1,7 +1,7 @@
 module Ner
   class Recognizer
     def initialize(serializedClassifier = nil)
-      serializedClassifier ||= NER_LIBS + "/classifiers/english.all.3class.distsim.crf.ser.gz"
+      serializedClassifier ||= NER_LIBS + "/stanford/classifiers/english.all.3class.distsim.crf.ser.gz"
 
       @classifier = CRFClassifier.getClassifierNoExceptions(serializedClassifier)
     end
