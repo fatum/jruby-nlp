@@ -1,11 +1,12 @@
 module Ner
   class Recognizer
     def initialize(serializedClassifier = nil)
-      serializedClassifier ||= "src/classifiers/english.all.3class.distsim.crf.ser.gz"
+      serializedClassifier ||= NER_LIBS + "/classifiers/english.all.3class.distsim.crf.ser.gz"
+
       @classifier = CRFClassifier.getClassifierNoExceptions(serializedClassifier)
     end
 
-    def extract(text)
+    def extract_3class(text)
       xml_response = @classifier.classifyToString(text, "xml", true)
       entities = Nokogiri::XML("<entities>#{xml_response}</entities>").xpath('//wi')
       {

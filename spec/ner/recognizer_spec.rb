@@ -5,7 +5,7 @@ describe Ner::Recognizer do
   let!(:recognizer) { described_class.new }
 
   it "should extractor named entity" do
-    response = recognizer.extract(text)
+    response = recognizer.extract_3class(text)
 
     response[:persons].should == ["Mr.", "Findman"]
     response[:organizations].should == ["Stanford"]
