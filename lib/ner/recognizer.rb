@@ -7,11 +7,11 @@ module Ner
     end
 
     def extract_3class(text)
-      xml_response = @classifier.classifyToString(text, "xml", true)
-      entities = Nokogiri::XML("<entities>#{xml_response}</entities>").xpath('//wi')
+      xml_response = @classifier.classifyWithInlineXML(text)
+      doc = Nokogiri::XML("<entities>#{xml_response}</entities>")
       {
-        :organizations => entities.select { |el| el.attributes["entity"].to_s == "ORGANIZATION" }.map(&:content),
-        :persons => entities.select { |el| el.attributes["entity"].to_s == "PERSON" }.map(&:content),
+        :organizations => doc.xpath('//ORGANIZATION').map(&:content),
+        :persons => doc.xpath('//PERSON').map(&:content)
       }
     end
   end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jruby-ner (0.0.1)
+    jruby-nlp (0.0.1)
       nokogiri
       rake
 
@@ -36,7 +36,7 @@ PLATFORMS
   java
 
 DEPENDENCIES
-  jruby-ner!
+  jruby-nlp!
   pry
   rdoc
   rspec
